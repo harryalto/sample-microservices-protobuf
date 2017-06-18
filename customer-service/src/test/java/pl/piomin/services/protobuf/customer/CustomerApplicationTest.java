@@ -48,7 +48,7 @@ public class CustomerApplicationTest {
 	@Test
 	public void insertById() {
 		//Customer c = this.template.postForObject("/customers", Customer.class, 1);
-		Customer request = Customer.newBuilder().setId(10).setPesel("12345").setName("Harihar Nath")
+		Customer request = Customer.newBuilder().setId(10).setPesel("12345").setName("Harry Alto")
 		.setType(CustomerType.INDIVIDUAL).build();
 		
 		Customer c = this.template.postForObject("/customers", request, Customer.class);
