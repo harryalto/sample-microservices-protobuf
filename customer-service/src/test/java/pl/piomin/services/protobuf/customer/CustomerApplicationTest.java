@@ -16,6 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import pl.piomin.services.protobuf.customer.model.CustomerProto.Customer;
 import pl.piomin.services.protobuf.customer.model.CustomerProto.Customers;
+import pl.piomin.services.protobuf.customer.model.CustomerProto.Customer.CustomerType;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @RunWith(SpringRunner.class)
@@ -26,7 +27,7 @@ public class CustomerApplicationTest {
 	@Autowired
 	TestRestTemplate template;
 	
-//	@Test
+	@Test
 	public void testFindById() {
 		Customer c = this.template.getForObject("/customers/{id}", Customer.class, 1);
 		logger.info("Customer[\n" + c + "]");
@@ -44,6 +45,15 @@ public class CustomerApplicationTest {
 		logger.info("Customers[\n" + c + "]");
 	}
 	
+	@Test
+	public void insertById() {
+		//Customer c = this.template.postForObject("/customers", Customer.class, 1);
+		Customer request = Customer.newBuilder().setId(10).setPesel("12345").setName("Harihar Nath")
+		.setType(CustomerType.INDIVIDUAL).build();
+		
+		Customer c = this.template.postForObject("/customers", request, Customer.class);
+		logger.info("Customer[\n" + c + "]");
+	}
 
 	@TestConfiguration
 	static class Config {

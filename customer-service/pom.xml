@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>pl.piomin</groupId>
+		<groupId>pl.piomin.test</groupId>
 		<artifactId>sample-microservices-protobuf</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
@@ -55,7 +55,7 @@
 						</goals>
 						<configuration>
 							<outputDirectory>src/main/generated</outputDirectory>
-							<protocExecutable>${proto.executable}</protocExecutable>
+							<protocExecutable>/usr/local/bin/protoc</protocExecutable>
 						</configuration>
 					</execution>
 				</executions>
